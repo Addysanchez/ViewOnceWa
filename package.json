@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "npm i && npm i pm2 -g && node ."
+    "start": "npm install && node ."
   },
   "keywords": [],
   "author": "",
@@ -14,11 +14,9 @@
     "@hapi/boom": "^10.0.1",
     "@whiskeysockets/baileys": "^6.5.0",
     "better-sqlite3": "^9.1.1",
-    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "file-type": "^18.7.0",
     "pino": "^8.16.2",
-    "qrcode-terminal": "^0.12.0",
     "quick.db": "^9.1.7"
   }
 }

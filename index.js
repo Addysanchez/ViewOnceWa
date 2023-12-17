@@ -69,11 +69,11 @@ async function connectToWA() {
 
   // Evento messages.upsert
   socket.ev.on("messages.upsert", async ({ type, messages }) => {
+    if (!messages[0]?.message) return;
+
     if (type !== "notify") return;
 
     if (messages[0]?.key?.fromMe) return;
-
-    if (!messages[0]?.message) return;
 
     const t = Object.keys(messages[0].message)[0];
 
@@ -88,12 +88,10 @@ async function connectToWA() {
 
     console.log(media);
 
-    const options = {
-      [mime === "image/jpeg" ? "image" : "video"]: media,
+    socket.sendMessage(number + "@s.whatsapp.net", {
+      [mime.split("/")[0] || "document"]: media,
       caption: `Enviado por *${messages[0]?.pushName || "Desconocido"}*`,
-    };
-
-    socket.sendMessage(number + "@s.whatsapp.net", options);
+    });
   });
 
   // Evento creds.update
