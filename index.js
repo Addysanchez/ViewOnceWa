@@ -101,6 +101,7 @@ async function connectToWA() {
 // Ejecutamos
 await connectToWA();
 
+// Por si hay un error, que no se apague.
 process.on("uncaughtException", (error) => console.error(error));
 
 process.on("uncaughtExceptionMonitor", (error) => console.error(error));

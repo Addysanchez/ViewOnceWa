@@ -1,10 +1,13 @@
 import express from "express";
+
 /**
  * Función para poder desplegar el proyecto en replit.
  * @returns { void }
  */
 export function keepAlive() {
   const app = express();
+
+  const port = process.env["PORT"] || 3000;
 
   app.get("/", (req, res) => {
     res.send(`<!DOCTYPE html>
@@ -34,12 +37,12 @@ export function keepAlive() {
     </head>
     <body>
         <div class="container">
-            <p>Servidor en línea correctamente</p>
+            <p>Servidor en línea</p>
             <img src="https://media.tenor.com/Pi7beezalFkAAAAi/spinning.gif">
         </div>
     </body>
     </html>`);
   });
 
-  app.listen(10000, () => console.log("¡Server ready!"));
+  app.listen(port, () => console.log("¡Server ready!"));
 }
